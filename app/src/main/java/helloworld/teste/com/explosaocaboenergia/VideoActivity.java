@@ -1,5 +1,7 @@
 package helloworld.teste.com.explosaocaboenergia;
 
+import android.content.Context;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,6 +19,10 @@ public class VideoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
 
+        AudioManager audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+        for (int i = 0; i < 100; i++){
+            audioManager.adjustVolume(AudioManager.ADJUST_RAISE, AudioManager.FLAG_PLAY_SOUND);
+        }
 
         VideoView vv = (VideoView) findViewById(R.id.videoView1);
         vv.setVideoPath("android.resource://"+getPackageName()+"/" + R.raw.video);
